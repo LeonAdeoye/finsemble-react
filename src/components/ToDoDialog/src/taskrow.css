@@ -1,0 +1,45 @@
+table, td
+{
+	border:1px solid lightgrey;
+	border-collapse: collapse;
+	width:100%;
+	margin-top: 2px;
+	background-color: #3d4455;
+}
+
+td.name-of-task
+{
+	width: 75%;
+}
+
+td.status-button
+{
+	width: 15%;
+}
+
+td.delete-button
+{
+	width: 10%;
+}
+
+input.new-task
+{
+	width: 400px;
+	margin-bottom: 5px;
+}
+
+button.completed
+{
+	background-color: darkolivegreen;
+}
+
+button.in-progress
+{
+	background-color: #cece71;
+}
+
+button.not-started
+{
+	background-color: #792626;
+}
+
