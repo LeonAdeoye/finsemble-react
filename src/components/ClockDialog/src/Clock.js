@@ -11,6 +11,11 @@ class Clock extends React.Component
 	{
 		super(props);
 		this.state = {date: new Date()};
+
+		fdc3.addContextListener("fdc3.task", (context) =>
+		{
+			FSBL.Clients.Logger.info("Task has been removed:  " + JSON.stringify(context));
+		});
 	}
 
 	componentDidMount()

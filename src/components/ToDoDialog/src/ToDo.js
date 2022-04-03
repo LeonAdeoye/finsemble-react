@@ -19,7 +19,6 @@ class ToDo extends React.Component
 		const previousTasks = this.state.tasks;
 		FSBL.Clients.Logger.info("Added new task: " + taskName);
 
-
 		const snoozeAction = new FSBL.Clients.NotificationClient.Action();
 		snoozeAction.buttonText = "Snooze";
 		snoozeAction.type = FSBL.Clients.NotificationClient.ActionTypes.SNOOZE;
@@ -44,7 +43,18 @@ class ToDo extends React.Component
 	{
 		FSBL.Clients.Logger.info("Removing task:  " + task.name);
 		const result = this.state.tasks.filter((taskToRemove) => taskToRemove.name !== task.name && taskToRemove.status !== task.status);
-		this.setState( {tasks: result});
+		this.setState( {tasks: result}, () =>
+		{
+			let context = {
+				type: "fdc3.task",
+				name: task.name,
+				id: {
+					name: task.name
+				}
+			}
+			fdc3.broadcast(context);
+		});
+
 	}
 
 	updateStatus = (task) =>
