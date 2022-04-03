@@ -17,7 +17,19 @@ class ToDo extends React.Component
 	addTask = (taskName) =>
 	{
 		const previousTasks = this.state.tasks;
-		this.setState({tasks: previousTasks.concat([{name: taskName, status: 1}])});
+
+		const snoozeAction = new FSBL.Clients.NotificationClient.Action();
+		snoozeAction.buttonText = "Snooze";
+		snoozeAction.type = FSBL.Clients.NotificationClient.ActionTypes.SNOOZE;
+		snoozeAction.milliseconds = 300000;
+
+		this.setState({tasks: previousTasks.concat([{name: taskName, status: 1}])}, () =>
+		FSBL.Clients.NotificationClient.notify({
+			source: "To Do App",
+			title: "Added a new task",
+			details: "Details: " + taskName,
+			actions: [snoozeAction]
+		}));
 	}
 
 	clearTasks = () =>
