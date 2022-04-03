@@ -12,10 +12,6 @@ class ToDo extends React.Component
 			tasks: [{ name: "Play Chess with Horatio.", status: 2 },
 				{ name: "Read at least one chapter from the book Dune.", status: 1 }]
 		};
-
-		const Logger = require("../../clients/logger").default;
-		Logger.log("Ready to log messages.");
-		Logger.start();
 	}
 
 	addTask = (taskName) =>

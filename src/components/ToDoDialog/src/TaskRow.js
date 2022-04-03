@@ -43,7 +43,7 @@ class TaskRow extends Component
 		const taskStatus = this.props.task.status;
 		return (
 			<div>
-				<table >
+				<table>
 					<tbody>
 						<tr>
 							<td className={"name-of-task"}>{taskName}</td>

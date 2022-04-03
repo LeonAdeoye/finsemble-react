@@ -16,7 +16,7 @@ class TaskList extends Component
 	render()
 	{
 		const todoItems = this.props.tasks.map((task) =>
-				<TaskRow task={task} removeTask={() => this.removeTask(task)} updateStatus={() => this.updateStatus(task)}/>
+				<TaskRow task={task} key={task.name} removeTask={() => this.removeTask(task)} updateStatus={() => this.updateStatus(task)}/>
 		);
 
 		return (
