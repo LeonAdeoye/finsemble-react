@@ -12,11 +12,17 @@ class ToDo extends React.Component
 			tasks: [{ name: "Play Chess with Horatio.", status: 2 },
 				{ name: "Read at least one chapter from the book Dune.", status: 1 }]
 		};
+
+		const Logger = require("../../clients/logger").default;
+		Logger.log("Ready to log messages.");
+		Logger.start();
 	}
 
 	addTask = (taskName) =>
 	{
 		const previousTasks = this.state.tasks;
+		FSBL.Clients.Logger.info("Added new task: " + taskName);
+
 
 		const snoozeAction = new FSBL.Clients.NotificationClient.Action();
 		snoozeAction.buttonText = "Snooze";
@@ -34,17 +40,20 @@ class ToDo extends React.Component
 
 	clearTasks = () =>
 	{
+		FSBL.Clients.Logger.info("Clearing all " + this.state.tasks.length + " tasks.");
 		this.setState({tasks: []});
 	}
 
 	removeTask = (task) =>
 	{
+		FSBL.Clients.Logger.info("Removing task:  " + task.name);
 		const result = this.state.tasks.filter((taskToRemove) => taskToRemove.name !== task.name && taskToRemove.status !== task.status);
 		this.setState( {tasks: result});
 	}
 
 	updateStatus = (task) =>
 	{
+		FSBL.Clients.Logger.info("Updating task:  " + task.name + " to status: " + task.status);
 		task.status = task.status + 1;
 		const result = this.state.tasks.map(taskToUpdate => (taskToUpdate.name === task.name) ? task : taskToUpdate);
 		this.setState({tasks: result});

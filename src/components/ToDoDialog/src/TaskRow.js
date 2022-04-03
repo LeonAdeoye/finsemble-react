@@ -44,11 +44,13 @@ class TaskRow extends Component
 		return (
 			<div>
 				<table >
-					<tr>
-						<td className={"name-of-task"}>{taskName}</td>
-						<td className={"status-button"}><StatusButton status={taskStatus} updateStatus={() => this.updateStatus(this.props.task)}/></td>
-						<td className={"delete-button"}><button onClick={() => this.removeTask(this.props.task)}>Delete</button></td>
-					</tr>
+					<tbody>
+						<tr>
+							<td className={"name-of-task"}>{taskName}</td>
+							<td className={"status-button"}><StatusButton status={taskStatus} updateStatus={() => this.updateStatus(this.props.task)}/></td>
+							<td className={"delete-button"}><button onClick={() => this.removeTask(this.props.task)}>Delete</button></td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		);
